@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 export const getServerSideProps: GetServerSideProps<{
   count: number;
 }> = async (ctx) => {
-  const count = await prisma.class.count();
+  const count = await prisma.classInfo.count();
   return {
     props: {
       count,
