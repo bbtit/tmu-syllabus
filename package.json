@@ -12,6 +12,7 @@
     "test-all": "npm run check-format && npm run check-lint && npm run check-types"
   },
   "dependencies": {
+    "@prisma/client": "^4.12.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -32,8 +33,12 @@
     "husky": "^8.0.0",
     "postcss": "^8.4.18",
     "prettier": "^2.8.4",
-    "prisma": "^4.10.1",
+    "prisma": "^4.12.0",
     "tailwindcss": "^3.2.4",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }
