@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { class2023 } from '../data/class2023Data';
 
-const prisma = new PrismaClient({ log: ['query'] });
+const prisma = new PrismaClient();
 
 async function main() {
   const classes = class2023;
