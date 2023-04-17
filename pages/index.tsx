@@ -1,22 +1,38 @@
-import type { NextPage, GetServerSideProps } from 'next';
-// import Head from 'next/head';
-// import Image from 'next/image';
-// import styles from '../styles/Home.module.css';
-import prisma from '../lib/prisma';
+import type { NextPage } from 'next';
+import SampleForm from '../components/SampleForm';
+import { useState } from 'react';
+import Card from '../components/Card';
 
-const Home: NextPage = () => {
-  return <div>Hello</div>;
+type ClassInfo = {
+  academicYear: string;
+  semester: string;
+  dayOfWeek: string;
+  period: string;
+  subjectName: string;
+  classNumber: string;
+  credits: string;
+  id: number;
+  instructor: string;
+  url: string;
+  category: string;
+  facultyCode: string;
 };
 
-export const getServerSideProps: GetServerSideProps<{
-  count: number;
-}> = async (ctx) => {
-  const count = await prisma.classInfo.count();
-  return {
-    props: {
-      count,
-    },
-  };
+const Home: NextPage = () => {
+  const [classInfo, setClassInfo] = useState<ClassInfo[]>([]);
+  return (
+    <>
+      <SampleForm func={setClassInfo} />
+
+      <div className='mb-5' />
+
+      <div className='flex flex-wrap justify-center gap-10'>
+        {classInfo.map((classInfo) => {
+          return <Card key={classInfo.id} classInfo={classInfo} />;
+        })}
+      </div>
+    </>
+  );
 };
 
 export default Home;
